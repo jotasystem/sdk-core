@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+
+		<PackageId>JotaSystem.Sdk.Core</PackageId>
+		<Version>1.0.0</Version>
+		<Authors>Jota System</Authors>
+		<Company>Jota System</Company>
+		<Product>Jota System SDK Core</Product>
+		<Title>Jota System SDK - Core</Title>
+		<Description>Pacote com entidades base, agregados, enums, value objects, abstrações e suporte a domain events para aplicações .NET.</Description>
+		<PackageTags>SDK;Core;DDD;Domain;AggregateRoot;DomainEvents;MultiTenant;jotasystem</PackageTags>
+		<RepositoryUrl>https://github.com/jotasystem/JotaSystem.Sdk</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/jotasystem/JotaSystem.Sdk</PackageProjectUrl>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageIcon>icon.png</PackageIcon>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackAsTool>False</PackAsTool>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="..\..\icon.png">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="..\..\README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="MediatR" Version="12.0.1" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.10" />
+	</ItemGroup>
+
+</Project>
