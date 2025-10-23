@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace JotaSystem.Sdk.Core.Domain.Entities
 {
-    public abstract class TenantEntity : EntityBase, IAuditable, ISoftDelete, ITenantEntity, IAggregateRoot
+    public abstract class TenantEntityBase : EntityBase, IAuditable, ISoftDelete, ITenantEntity, IAggregateRoot
     {
         public DateTime CreatedAt { get; protected set; } = DateTime.UtcNow;
         public DateTime? UpdatedAt { get; protected set; }
