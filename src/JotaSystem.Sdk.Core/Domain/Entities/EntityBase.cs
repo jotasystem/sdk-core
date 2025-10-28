@@ -18,25 +18,6 @@ namespace JotaSystem.Sdk.Core.Domain.Entities
         public void SetExternalId(Guid externalId) => ExternalId = externalId;
 
 
-        #region Domain Events
-
-        private readonly List<IDomainEvent> _domainEvents = new();
-        public IReadOnlyCollection<IDomainEvent> Events => _domainEvents.AsReadOnly();
-
-        public void AddDomainEvent(IDomainEvent @event)
-        {
-            if (@event == null) return;
-
-            _domainEvents.Add(@event);
-            DomainEvents.Raise(@event); // envia para o centralizador
-        }
-
-        public void RemoveDomainEvent(IDomainEvent @event) => _domainEvents.Remove(@event);
-
-        public void ClearDomainEvents() => _domainEvents.Clear();
-
-        #endregion
-
         #region Igualdade
 
         public override bool Equals(object? obj)
