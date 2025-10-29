@@ -17,7 +17,7 @@ namespace JotaSystem.Sdk.Core.Application.Behaviors
             // Verifica se a requisição é um Command (evita transação em Queries)
             if (request is not ICommand<TResponse>) return await next();
 
-            _logger.LogInformation("Iniciando transação para {Command}", typeof(TRequest).Name);
+            _logger.LogInformation($"Iniciando transação para Command '{typeof(TRequest).Name}'");
             await _unitOfWork.BeginTransactionAsync(cancellationToken);
 
             try
@@ -25,18 +25,18 @@ namespace JotaSystem.Sdk.Core.Application.Behaviors
                 var response = await next(); // Executa o Handler
 
                 // Commit
-                //await _unitOfWork.CommitAsync(cancellationToken);
+                await _unitOfWork.CommitTransactionAsync(cancellationToken);
 
                 // Dispara domain events
                 await _domainEventsDispatcher.DispatchEventsAsync();
 
-                _logger.LogInformation("Transação para {Command} concluída com sucesso.");
+                _logger.LogInformation($"Transação para Command '{typeof(TRequest).Name}' concluída com sucesso.");
                 return response;
             }
             catch (Exception ex)
             {
                 //await _unitOfWork.RollbackAsync(cancellationToken);
-                _logger.LogError(ex, "Erro ao executar {Command}. Transação revertida.");
+                _logger.LogError(ex, $"Erro ao executar Command '{typeof(TRequest).Name}'. Transação revertida.");
                 throw;
             }
         }
