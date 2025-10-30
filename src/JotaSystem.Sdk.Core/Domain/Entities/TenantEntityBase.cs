@@ -1,4 +1,5 @@
 ﻿using JotaSystem.Sdk.Core.Domain.Abstractions;
+using JotaSystem.Sdk.Core.Domain.Enums;
 using System.ComponentModel.DataAnnotations;
 
 namespace JotaSystem.Sdk.Core.Domain.Entities

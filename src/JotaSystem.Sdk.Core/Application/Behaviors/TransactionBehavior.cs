@@ -1,6 +1,6 @@
 ﻿using JotaSystem.Sdk.Core.Application.Abstractions;
 using JotaSystem.Sdk.Core.CrossCutting;
-using JotaSystem.Sdk.Core.Infrastructure;
+using JotaSystem.Sdk.Core.Infrastructure.UnitOfWork;
 using MediatR;
 
 namespace JotaSystem.Sdk.Core.Application.Behaviors

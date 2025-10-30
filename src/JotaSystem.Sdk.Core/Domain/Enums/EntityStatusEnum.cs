@@ -1,4 +1,4 @@
-﻿namespace JotaSystem.Sdk.Core.Domain
+﻿namespace JotaSystem.Sdk.Core.Domain.Enums
 {
     /// <summary>
     /// Representa o estado atual de uma entidade do sistema.

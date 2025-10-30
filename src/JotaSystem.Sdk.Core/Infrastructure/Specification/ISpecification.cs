@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace JotaSystem.Sdk.Core.Infrastructure
+namespace JotaSystem.Sdk.Core.Infrastructure.Specification
 {
     /// <summary>
     /// Abstração de especificação para queries.

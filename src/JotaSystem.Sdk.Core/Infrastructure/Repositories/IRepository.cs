@@ -1,4 +1,4 @@
-﻿namespace JotaSystem.Sdk.Core.Infrastructure
+﻿namespace JotaSystem.Sdk.Core.Infrastructure.Repositories
 {
     /// <summary>
     /// Interface genérica de repositório base
