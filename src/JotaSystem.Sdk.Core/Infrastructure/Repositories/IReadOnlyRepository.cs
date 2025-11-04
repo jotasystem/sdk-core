@@ -1,4 +1,5 @@
-﻿using System.Linq.Expressions;
+﻿using JotaSystem.Sdk.Core.CrossCutting.Models;
+using System.Linq.Expressions;
 
 namespace JotaSystem.Sdk.Core.Infrastructure.Repositories
 {
@@ -35,13 +36,13 @@ namespace JotaSystem.Sdk.Core.Infrastructure.Repositories
             CancellationToken cancellationToken = default);
 
         // Paginação
-        //Task<PagedModel<TEntity>> GetAllWithPaginationAsync(
-        //    int page,
-        //    int pageSize = 10,
-        //    Expression<Func<TEntity, bool>>? filter = null,
-        //    Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? order = null,
-        //    bool disableTracking = true,
-        //    Func<IQueryable<TEntity>, IQueryable<TEntity>>? include = null,
-        //    CancellationToken cancellationToken = default);
+        Task<PaginatedList<TEntity>> GetAllWithPaginationAsync(
+            int page,
+            int pageSize = 10,
+            Expression<Func<TEntity, bool>>? filter = null,
+            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? order = null,
+            bool disableTracking = true,
+            Func<IQueryable<TEntity>, IQueryable<TEntity>>? include = null,
+            CancellationToken cancellationToken = default);
     }
 }

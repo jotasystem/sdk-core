@@ -1,6 +1,4 @@
-﻿using JotaSystem.Sdk.Core.Domain.Abstractions;
-
-namespace JotaSystem.Sdk.Core.Domain.Events
+﻿namespace JotaSystem.Sdk.Core.Domain.Events
 {
     /// <summary>
     /// Classe estática para gerenciar eventos de domínio
