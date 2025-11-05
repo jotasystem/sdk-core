@@ -22,7 +22,19 @@ namespace JotaSystem.Sdk.Core.CrossCutting.Exceptions
         public static HttpException NotFound(string message)
             => new(StatusCodes.Status404NotFound, "NotFound", message);
 
+        public static HttpException MethodNotAllowed(string message)
+            => new(StatusCodes.Status405MethodNotAllowed, "MethodNotAllowed", message);
+
+        public static HttpException Conflict(string message)
+            => new(StatusCodes.Status409Conflict, "Conflict", message);
+
         public static HttpException UnprocessableEntity(List<Notification> errors)
             => new(StatusCodes.Status422UnprocessableEntity, "ValidationFailure", "ValidationError", errors);
+
+        public static HttpException InternalServerError(string? message = null, List<Notification>? errors = null)
+            => new(StatusCodes.Status500InternalServerError, "InternalServerError", message ?? "Internal Server Error", errors);
+
+        public static HttpException Custom(int statusCode, string title, string message, List<Notification>? errors = null)
+            => new(statusCode, title, message, errors);
     }
 }
