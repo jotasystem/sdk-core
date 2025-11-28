@@ -30,8 +30,14 @@ namespace JotaSystem.Sdk.Core.Application.Results
         public static Result<T> NotFound<T>(string? message = null, List<Notification>? errors = null)
             => Result<T>.Fail(StatusCodes.Status404NotFound, message ?? "Not Found", GetTraceId(), errors);
 
+        public static Result<T> MethodNotAllowed<T>(string? message = null, List<Notification>? errors = null)
+            => Result<T>.Fail(StatusCodes.Status405MethodNotAllowed, message ?? "Method Not Allowed", GetTraceId(), errors);
+
         public static Result<T> Conflict<T>(string? message = null, List<Notification>? errors = null)
             => Result<T>.Fail(StatusCodes.Status409Conflict, message ?? "Conflict", GetTraceId(), errors);
+
+        public static Result<T> UnprocessableEntity<T>(string? message = null, List<Notification>? errors = null)
+            => Result<T>.Fail(StatusCodes.Status422UnprocessableEntity, message ?? "Unprocessable Entity", GetTraceId(), errors);
 
         public static Result<T> InternalServerError<T>(string? message = null, List<Notification>? errors = null)
             => Result<T>.Fail(StatusCodes.Status500InternalServerError, message ?? "Internal Server Error", GetTraceId(), errors);
@@ -40,7 +46,6 @@ namespace JotaSystem.Sdk.Core.Application.Results
             => Result<T>.Fail(statusCode, message, GetTraceId(), errors);
 
         // ERROR SEM TIPO (Result)
-
         public static Result BadRequest(string? message = null, List<Notification>? errors = null)
             => Result.Fail(StatusCodes.Status400BadRequest, message ?? "Bad Request", GetTraceId(), errors);
 
@@ -53,8 +58,14 @@ namespace JotaSystem.Sdk.Core.Application.Results
         public static Result NotFound(string? message = null, List<Notification>? errors = null)
             => Result.Fail(StatusCodes.Status404NotFound, message ?? "Not Found", GetTraceId(), errors);
 
+        public static Result MethodNotAllowed(string? message = null, List<Notification>? errors = null)
+            => Result.Fail(StatusCodes.Status405MethodNotAllowed, message ?? "Method Not Allowed", GetTraceId(), errors);
+
         public static Result Conflict(string? message = null, List<Notification>? errors = null)
             => Result.Fail(StatusCodes.Status409Conflict, message ?? "Conflict", GetTraceId(), errors);
+
+        public static Result UnprocessableEntity(string? message = null, List<Notification>? errors = null)
+            => Result.Fail(StatusCodes.Status422UnprocessableEntity, message ?? "Unprocessable Entity", GetTraceId(), errors);
 
         public static Result InternalServerError(string? message = null, List<Notification>? errors = null)
             => Result.Fail(StatusCodes.Status500InternalServerError,  message ?? "Internal Server Error", GetTraceId(), errors);
