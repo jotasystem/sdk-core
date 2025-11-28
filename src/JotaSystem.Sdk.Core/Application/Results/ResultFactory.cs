@@ -8,14 +8,39 @@ namespace JotaSystem.Sdk.Core.Application.Results
     {
         private static string? GetTraceId() => Activity.Current?.Id;
 
-        // SUCCESS
+        // SUCCESS (COM DATA)
         public static Result<T> Success<T>(T data, string? message = null, int statusCode = StatusCodes.Status200OK)
             => Result<T>.Ok(data, statusCode, message ?? "Success", GetTraceId());
 
+        // SUCCESS SEM DATA
         public static Result Success(string? message = null, int statusCode = StatusCodes.Status200OK)
             => Result.Ok(statusCode, message ?? "Success", GetTraceId());
 
-        // ERROR
+
+        // ERRO TIPADO (Result<T>)
+        public static Result<T> BadRequest<T>(string? message = null, List<Notification>? errors = null)
+            => Result<T>.Fail(StatusCodes.Status400BadRequest, message ?? "Bad Request", GetTraceId(), errors);
+
+        public static Result<T> Unauthorized<T>(string? message = null, List<Notification>? errors = null)
+            => Result<T>.Fail(StatusCodes.Status401Unauthorized, message ?? "Unauthorized", GetTraceId(), errors);
+
+        public static Result<T> Forbidden<T>(string? message = null, List<Notification>? errors = null)
+            => Result<T>.Fail(StatusCodes.Status403Forbidden, message ?? "Forbidden", GetTraceId(), errors);
+
+        public static Result<T> NotFound<T>(string? message = null, List<Notification>? errors = null)
+            => Result<T>.Fail(StatusCodes.Status404NotFound, message ?? "Not Found", GetTraceId(), errors);
+
+        public static Result<T> Conflict<T>(string? message = null, List<Notification>? errors = null)
+            => Result<T>.Fail(StatusCodes.Status409Conflict, message ?? "Conflict", GetTraceId(), errors);
+
+        public static Result<T> InternalServerError<T>(string? message = null, List<Notification>? errors = null)
+            => Result<T>.Fail(StatusCodes.Status500InternalServerError, message ?? "Internal Server Error", GetTraceId(), errors);
+
+        public static Result<T> Custom<T>(int statusCode, string message, List<Notification>? errors = null)
+            => Result<T>.Fail(statusCode, message, GetTraceId(), errors);
+
+        // ERROR SEM TIPO (Result)
+
         public static Result BadRequest(string? message = null, List<Notification>? errors = null)
             => Result.Fail(StatusCodes.Status400BadRequest, message ?? "Bad Request", GetTraceId(), errors);
 
@@ -32,7 +57,7 @@ namespace JotaSystem.Sdk.Core.Application.Results
             => Result.Fail(StatusCodes.Status409Conflict, message ?? "Conflict", GetTraceId(), errors);
 
         public static Result InternalServerError(string? message = null, List<Notification>? errors = null)
-            => Result.Fail(StatusCodes.Status500InternalServerError, message ?? "Internal Server Error", GetTraceId(), errors);
+            => Result.Fail(StatusCodes.Status500InternalServerError,  message ?? "Internal Server Error", GetTraceId(), errors);
 
         public static Result Custom(int statusCode, string message, List<Notification>? errors = null)
             => Result.Fail(statusCode, message, GetTraceId(), errors);

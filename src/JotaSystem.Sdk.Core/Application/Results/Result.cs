@@ -35,13 +35,16 @@ namespace JotaSystem.Sdk.Core.Application.Results
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public T? Data { get; }
 
-        private Result(T? data, int statusCode, string message, string? traceId)
-            : base(true, statusCode, message, traceId, null)
+        private Result(T? data, int statusCode, string message, string? traceId, List<Notification>? errors = null)
+            : base(true, statusCode, message, traceId, errors)
         {
             Data = data;
         }
 
         public static Result<T> Ok(T data, int statusCode = StatusCodes.Status200OK, string message = "Success", string? traceId = null)
             => new(data, statusCode, message, traceId);
+
+        public static new Result<T> Fail(int statusCode = StatusCodes.Status500InternalServerError, string message = "Fail", string? traceId = null, List<Notification>? errors = null)
+            => new(default!, statusCode, message, traceId, errors ?? []);
     }
 }
