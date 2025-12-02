@@ -3,5 +3,6 @@ using MediatR;
 
 namespace JotaSystem.Sdk.Core.Application.Commands
 {
+    public interface ICommand;
     public interface ICommand<TResponse> : IRequest<Result<TResponse>>;
 }
