@@ -14,8 +14,12 @@ namespace JotaSystem.Sdk.Core.Infrastructure.Repositories
         Task<int> CountAsync(Expression<Func<TEntity, bool>>? filter = null, CancellationToken cancellationToken = default);
 
         // Consultas individuais
-        Task<TEntity?> GetByIdAsync(
-            long id,
+        Task<TEntity?> GetByIdAsync(long id,
+            bool disableTracking = true,
+            Func<IQueryable<TEntity>, IQueryable<TEntity>>? include = null,
+            CancellationToken cancellationToken = default);
+
+        Task<TEntity?> GetByExternalIdAsync(Guid externalId,
             bool disableTracking = true,
             Func<IQueryable<TEntity>, IQueryable<TEntity>>? include = null,
             CancellationToken cancellationToken = default);
