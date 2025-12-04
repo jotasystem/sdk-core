@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 
 namespace JotaSystem.Sdk.Core.CrossCutting.Providers
 {
-    public enum PushNotificationProvider
+    public enum PushNotificationProviderType
     {
         [Display(Name = "Firebase Cloud Messaging (FCM)")]
         [EnumMember(Value = "fcm")]

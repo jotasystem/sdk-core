@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 
 namespace JotaSystem.Sdk.Core.CrossCutting.Providers
 {
-    public enum MapProvider
+    public enum MapProviderType
     {
         [Display(Name = "Google Maps")]
         [EnumMember(Value = "google_maps")]

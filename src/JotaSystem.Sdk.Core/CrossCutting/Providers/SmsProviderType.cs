@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 
 namespace JotaSystem.Sdk.Core.CrossCutting.Providers
 {
-    public enum SmsProvider
+    public enum SmsProviderType
     {
         // Principais no Brasil
         [Display(Name = "Twilio")]

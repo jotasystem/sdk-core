@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 
 namespace JotaSystem.Sdk.Core.CrossCutting.Providers
 {
-    public enum StorageProvider
+    public enum StorageProviderType
     {
         [Display(Name = "AWS S3")]
         [EnumMember(Value = "aws_s3")]

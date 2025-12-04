@@ -6,7 +6,7 @@ namespace JotaSystem.Sdk.Core.CrossCutting.Settings
     public class EmailSettings
     {
         [Required]
-        public EmailProvider Provider { get; set; } = EmailProvider.Smtp;
+        public EmailProviderType Provider { get; set; } = EmailProviderType.Smtp;
 
         // Configurações específicas de cada provider
         public SmtpSetting? Smtp { get; set; }

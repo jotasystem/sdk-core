@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 
 namespace JotaSystem.Sdk.Core.CrossCutting.Providers
 {
-    public enum EmailProvider
+    public enum EmailProviderType
     {
         [Display(Name = "SMTP Padrão")]
         [EnumMember(Value = "smtp")]

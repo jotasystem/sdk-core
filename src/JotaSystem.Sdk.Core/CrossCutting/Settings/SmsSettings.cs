@@ -6,7 +6,7 @@ namespace JotaSystem.Sdk.Core.CrossCutting.Settings
     public class SmsSettings
     {
         [Required]
-        public SmsProvider Provider { get; set; }
+        public SmsProviderType Provider { get; set; }
 
         // Configurações específicas por provider
         public TwilioSetting? Twilio { get; set; }

@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 
 namespace JotaSystem.Sdk.Core.CrossCutting.Providers
 {
-    public enum PaymentProvider
+    public enum PaymentProviderType
     {
         [Display(Name = "Mercado Pago")]
         [EnumMember(Value = "mercado_pago")]

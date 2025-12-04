@@ -6,7 +6,7 @@ namespace JotaSystem.Sdk.Core.CrossCutting.Settings
     public class PaymentSettings
     {
         [Required] 
-        public PaymentProvider Provider { get; set; }
+        public PaymentProviderType Provider { get; set; }
 
         // Configurações específicas de cada provider
         public MercadoPagoSetting? MercadoPago { get; set; }

@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 
 namespace JotaSystem.Sdk.Core.CrossCutting.Providers
 {
-    public enum AddressProvider
+    public enum AddressProviderType
     {
         [Display(Name = "ViaCEP")]
         [EnumMember(Value = "viacep")]

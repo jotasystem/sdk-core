@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 
 namespace JotaSystem.Sdk.Core.CrossCutting.Providers
 {
-    public enum AiProvider
+    public enum AiProviderType
     {
         [Display(Name = "OpenAI")]
         [EnumMember(Value = "openai")]
