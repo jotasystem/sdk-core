@@ -1,6 +1,6 @@
 ﻿namespace JotaSystem.Sdk.Core.CrossCutting.Identity
 {
-    public interface ITenantProvider
+    public interface ITenantContext
     {
         long GetTenantId();
     }
