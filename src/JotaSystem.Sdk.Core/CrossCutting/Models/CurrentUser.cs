@@ -17,5 +17,6 @@ namespace JotaSystem.Sdk.Core.CrossCutting.Models
         public List<string> Permissions { get; set; } = [];
         public string Culture { get; set; } = string.Empty;
         public string TimeZone { get; set; } = string.Empty;
+        public string Currency { get; set; } = string.Empty;
     }
 }
