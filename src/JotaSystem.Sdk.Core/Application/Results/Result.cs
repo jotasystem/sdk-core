@@ -11,7 +11,7 @@ namespace JotaSystem.Sdk.Core.Application.Results
         public string Message { get; }
         public string? TraceId { get; }
 
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public List<Notification>? Errors { get; } = [];
 
         protected Result(bool success, int statusCode, string message, string? traceId, List<Notification>? errors)
@@ -32,7 +32,7 @@ namespace JotaSystem.Sdk.Core.Application.Results
 
     public class Result<T> : Result
     {
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public T? Data { get; }
 
         private Result(T? data, bool success, int statusCode, string message, string? traceId, List<Notification>? errors = null)
