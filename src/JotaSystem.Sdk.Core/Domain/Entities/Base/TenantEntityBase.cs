@@ -7,7 +7,7 @@ namespace JotaSystem.Sdk.Core.Domain.Entities.Base
     {
         public long TenantId { get; protected set; }
         public EntityStatusEnum Status { get; protected set; } = EntityStatusEnum.Active;
-        public DateTime CreatedAt { get; protected set; } = DateTime.UtcNow;
+        public DateTime CreatedAt { get; protected set; } = DateTime.Now;
         public DateTime? UpdatedAt { get; protected set; }
         public bool IsDeleted { get; protected set; }
         public DateTime? DeletedAt { get; protected set; }
@@ -27,7 +27,7 @@ namespace JotaSystem.Sdk.Core.Domain.Entities.Base
 
         #region Auditable / SoftDelete
 
-        public void Update(DateTime? updatedAt = null) => UpdatedAt = updatedAt ?? DateTime.UtcNow;
+        public void Update(DateTime? updatedAt = null) => UpdatedAt = updatedAt ?? DateTime.Now;
 
         public void Delete()
         {
