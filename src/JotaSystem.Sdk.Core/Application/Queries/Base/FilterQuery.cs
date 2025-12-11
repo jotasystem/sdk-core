@@ -7,6 +7,6 @@ namespace JotaSystem.Sdk.Core.Application.Queries.Base
         Dictionary<string, string>? Filters = null,
         string? SortBy = null,
         bool Descending = false,
-        int Page = 1,
-        int PageSize = AppConstants.DefaultPageSize) : PagedQuery(Page, PageSize);
+        int Page = AppConstant.DefaultPage,
+        int PageSize = AppConstant.DefaultPageSize) : PagedQuery(Page, PageSize);
 }
