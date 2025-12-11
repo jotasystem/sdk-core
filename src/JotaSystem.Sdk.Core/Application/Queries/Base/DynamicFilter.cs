@@ -2,7 +2,7 @@
 
 namespace JotaSystem.Sdk.Core.Application.Queries.Base
 {
-    public static class DynamicFilterBuilder
+    public static class DynamicFilter
     {
         public static Expression<Func<TEntity, bool>>? Build<TEntity>(FilterQuery query)
         {
@@ -41,11 +41,22 @@ namespace JotaSystem.Sdk.Core.Application.Queries.Base
                     if (prop == null) continue;
 
                     var member = Expression.Property(parameter, prop);
+                    var propType = prop.PropertyType;
+                    var value = kv.Value;
 
-                    // Conversão automática
-                    var convertedValue = Convert.ChangeType(kv.Value, prop.PropertyType);
+                    object? convertedValue;
+
+                    if (propType.IsEnum)
+                        convertedValue = Enum.Parse(propType, value, true);
+                    else if (Nullable.GetUnderlyingType(propType)?.IsEnum == true)
+                    {
+                        var enumType = Nullable.GetUnderlyingType(propType)!;
+                        convertedValue = Enum.Parse(enumType, value, true);
+                    }
+                    else
+                        convertedValue = Convert.ChangeType(value, propType);
+
                     var constant = Expression.Constant(convertedValue, prop.PropertyType);
-
                     var equalExpr = Expression.Equal(member, constant);
 
                     body = body == null ? equalExpr : Expression.AndAlso(body, equalExpr);
