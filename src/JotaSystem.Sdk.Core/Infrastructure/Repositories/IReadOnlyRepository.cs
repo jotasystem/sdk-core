@@ -14,21 +14,13 @@ namespace JotaSystem.Sdk.Core.Infrastructure.Repositories
         Task<int> CountAsync(Expression<Func<TEntity, bool>>? filter = null, CancellationToken cancellationToken = default);
 
         // Consultas individuais
-        Task<TEntity?> GetByIdAsync(long id,
-            bool disableTracking = true,
-            Func<IQueryable<TEntity>, IQueryable<TEntity>>? include = null,
-            CancellationToken cancellationToken = default);
-
-        Task<TEntity?> GetByExternalIdAsync(Guid externalId,
-            bool disableTracking = true,
-            Func<IQueryable<TEntity>, IQueryable<TEntity>>? include = null,
-            CancellationToken cancellationToken = default);
+        Task<TEntity?> GetByIdAsync(long id, bool disableTracking = true, CancellationToken cancellationToken = default);
+        Task<TEntity?> GetByExternalIdAsync(Guid externalId, bool disableTracking = true,CancellationToken cancellationToken = default);
 
         Task<TEntity?> GetOneAsync(
             Expression<Func<TEntity, bool>>? filter = null,
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? order = null,
             bool disableTracking = true,
-            Func<IQueryable<TEntity>, IQueryable<TEntity>>? include = null,
             CancellationToken cancellationToken = default);
 
         // Consultas de lista
@@ -36,7 +28,6 @@ namespace JotaSystem.Sdk.Core.Infrastructure.Repositories
             Expression<Func<TEntity, bool>>? filter = null,
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? order = null,
             bool disableTracking = true,
-            Func<IQueryable<TEntity>, IQueryable<TEntity>>? include = null,
             CancellationToken cancellationToken = default);
 
         // Paginação
