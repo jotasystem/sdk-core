@@ -1,5 +1,5 @@
-﻿using JotaSystem.Sdk.Core.Domain.Entities;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
+using System.Reflection;
 
 namespace JotaSystem.Sdk.Core.Application.Queries.Base
 {
@@ -10,27 +10,28 @@ namespace JotaSystem.Sdk.Core.Application.Queries.Base
             if (string.IsNullOrWhiteSpace(query.SortBy))
                 return null;
 
-            var property = typeof(TEntity).GetProperty(query.SortBy);
+            // Obter a propriedade na entidade TEntity
+            PropertyInfo property = typeof(TEntity).GetProperty(query.SortBy)!;
             if (property == null)
                 return null;
 
-            var param = Expression.Parameter(typeof(TEntity), "x");
-            var body = Expression.Property(param, property);
+            // Criar a expressão x => x.Prop
+            ParameterExpression parameter = Expression.Parameter(typeof(TEntity), "x");
+            MemberExpression propertyAccess = Expression.Property(parameter, property);
+            LambdaExpression keySelector = Expression.Lambda(propertyAccess, parameter);
 
-            var keySelector = Expression.Lambda(body, param);
+            // Determinar método OrderBy ou OrderByDescending
+            string methodName = query.Descending ? "OrderByDescending" : "OrderBy";
 
-            var methodName = query.Descending ? "OrderByDescending" : "OrderBy";
+            // Obter método genérico correto do Queryable
+            MethodInfo method = typeof(Queryable)
+                .GetMethods()
+                .Where(m => m.Name == methodName && m.GetParameters().Length == 2)
+                .Single()
+                .MakeGenericMethod(typeof(TEntity), property.PropertyType);
 
-            return q =>
-            {
-                var method = typeof(Queryable)
-                    .GetMethods()
-                    .First(m => m.Name == methodName
-                                && m.GetParameters().Length == 2)
-                    .MakeGenericMethod(typeof(IEntity), property.PropertyType);
-
-                return (IOrderedQueryable<TEntity>)method.Invoke(null, [q, keySelector])!;
-            };
+            // Retornar função que aplica a ordenação
+            return q => (IOrderedQueryable<TEntity>)method.Invoke(null, new object[] { q, keySelector })!;
         }
     }
 }
