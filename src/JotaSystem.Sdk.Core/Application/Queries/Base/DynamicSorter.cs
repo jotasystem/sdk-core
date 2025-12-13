@@ -7,11 +7,11 @@ namespace JotaSystem.Sdk.Core.Application.Queries.Base
     {
         public static Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? Build<TEntity>(FilterQuery query)
         {
-            if (string.IsNullOrWhiteSpace(query.SortBy))
+            if (string.IsNullOrWhiteSpace(query.OrderBy))
                 return null;
 
             // Obter a propriedade na entidade TEntity
-            PropertyInfo property = typeof(TEntity).GetProperty(query.SortBy)!;
+            PropertyInfo property = typeof(TEntity).GetProperty(query.OrderBy)!;
             if (property == null)
                 return null;
 
