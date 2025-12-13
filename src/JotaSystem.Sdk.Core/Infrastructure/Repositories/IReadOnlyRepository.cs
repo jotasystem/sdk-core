@@ -37,7 +37,6 @@ namespace JotaSystem.Sdk.Core.Infrastructure.Repositories
             Expression<Func<TEntity, bool>>? filter = null,
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? order = null,
             bool disableTracking = true,
-            Func<IQueryable<TEntity>, IQueryable<TEntity>>? include = null,
             CancellationToken cancellationToken = default);
     }
 }
