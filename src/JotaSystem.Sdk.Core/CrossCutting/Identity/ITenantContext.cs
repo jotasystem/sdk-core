@@ -2,6 +2,6 @@
 {
     public interface ITenantContext
     {
-        long GetTenantId();
+        Task<long> GetTenantId();
     }
 }
