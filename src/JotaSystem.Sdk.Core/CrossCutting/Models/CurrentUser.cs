@@ -12,6 +12,8 @@ namespace JotaSystem.Sdk.Core.CrossCutting.Models
         public string Email { get; set; } = string.Empty;
         public string PhoneNumber { get; set; } = string.Empty;
         public string Picture { get; set; } = string.Empty;
+        public string TenantImage { get; set; } = string.Empty;
+        public string TenantColor { get; set; } = string.Empty;
         public UserProfileEnum Profile { get; set; }
         public List<string> Roles { get; set; } = [];
         public List<string> Permissions { get; set; } = [];
