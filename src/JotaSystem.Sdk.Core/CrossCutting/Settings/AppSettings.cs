@@ -7,5 +7,6 @@
         public PaymentSettings Payment { get; set; } = new();
         public EmailSettings Email { get; set; } = new();
         public SmsSettings Sms { get; set; } = new();
+        public AiSettings Ai { get; set; } = new();
     }
 }
