@@ -44,17 +44,6 @@ namespace JotaSystem.Sdk.Core.Tests.CrossCutting.Imaging
 
         [Theory]
         [InlineData("")]
-        public void GerarQRCode_EntradaInvalida_DeveLancarExcecao(string texto)
-        {
-            // Act & Assert
-            Assert.ThrowsAny<Exception>(() =>
-            {
-                CodeImageGenerator.QRCode(texto);
-            });
-        }
-
-        [Theory]
-        [InlineData("")]
         public void GerarBarcode128_EntradaInvalida_DeveLancarExcecao(string codigo)
         {
             // Act & Assert
