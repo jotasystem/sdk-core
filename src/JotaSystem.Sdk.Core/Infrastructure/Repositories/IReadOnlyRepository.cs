@@ -10,17 +10,14 @@ namespace JotaSystem.Sdk.Core.Infrastructure.Repositories
     /// <typeparam name="TEntity">Tipo da entidade</typeparam>
     public interface IReadOnlyRepository<TEntity> where TEntity : class
     {
-        // Consultas simples
+        Task<TEntity?> GetByIdAsync(long id, bool disableTracking = true, CancellationToken cancellationToken = default);
+        Task<TEntity?> GetByExternalIdAsync(Guid externalId, bool disableTracking = true, CancellationToken cancellationToken = default);
+
         Task<bool> ExistsAsync(Expression<Func<TEntity, bool>> filter, CancellationToken cancellationToken = default);
         Task<int> CountAsync(Expression<Func<TEntity, bool>>? filter = null, CancellationToken cancellationToken = default);
+        Task<TEntity?> FirstOrDefaultAsync(Expression<Func<TEntity, bool>>? filter = null, CancellationToken cancellationToken = default);
 
-        // Consultas individuais
-        Task<TEntity?> GetByIdAsync(long id, bool disableTracking = true, CancellationToken cancellationToken = default);
-        Task<TEntity?> GetByExternalIdAsync(Guid externalId, bool disableTracking = true,CancellationToken cancellationToken = default);
-        Task<TEntity?> GetAsync(Specification<TEntity> spec, bool disableTracking = true, CancellationToken cancellationToken = default);
-
-        // Consultas lista/paginação
-        Task<IList<TEntity>> GetAllAsync(Specification<TEntity>? spec = null, CancellationToken cancellationToken = default);
+        Task<IList<TEntity>> GetAsync(Specification<TEntity>? spec = null, CancellationToken cancellationToken = default);
         Task<PaginatedList<TEntity>> GetPagedAsync(int page, int pageSize = 10, Specification<TEntity>? spec = null, CancellationToken cancellationToken = default);
     }
 }
