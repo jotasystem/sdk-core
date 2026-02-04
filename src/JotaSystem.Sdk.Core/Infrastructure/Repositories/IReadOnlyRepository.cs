@@ -1,4 +1,5 @@
-﻿using JotaSystem.Sdk.Core.CrossCutting.Models;
+﻿using JotaSystem.Sdk.Core.Application.Specifications;
+using JotaSystem.Sdk.Core.CrossCutting.Models;
 using System.Linq.Expressions;
 
 namespace JotaSystem.Sdk.Core.Infrastructure.Repositories
@@ -16,27 +17,10 @@ namespace JotaSystem.Sdk.Core.Infrastructure.Repositories
         // Consultas individuais
         Task<TEntity?> GetByIdAsync(long id, bool disableTracking = true, CancellationToken cancellationToken = default);
         Task<TEntity?> GetByExternalIdAsync(Guid externalId, bool disableTracking = true,CancellationToken cancellationToken = default);
+        Task<TEntity?> GetAsync(Specification<TEntity> spec, bool disableTracking = true, CancellationToken cancellationToken = default);
 
-        Task<TEntity?> GetOneAsync(
-            Expression<Func<TEntity, bool>>? filter = null,
-            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? order = null,
-            bool disableTracking = true,
-            CancellationToken cancellationToken = default);
-
-        // Consultas de lista
-        Task<IList<TEntity>> GetAllAsync(
-            Expression<Func<TEntity, bool>>? filter = null,
-            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? order = null,
-            bool disableTracking = true,
-            CancellationToken cancellationToken = default);
-
-        // Paginação
-        Task<PaginatedList<TEntity>> GetAllWithPaginationAsync(
-            int page,
-            int pageSize = 10,
-            Expression<Func<TEntity, bool>>? filter = null,
-            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? order = null,
-            bool disableTracking = true,
-            CancellationToken cancellationToken = default);
+        // Consultas lista/paginação
+        Task<IList<TEntity>> GetAllAsync(Specification<TEntity>? spec = null, CancellationToken cancellationToken = default);
+        Task<PaginatedList<TEntity>> GetPagedAsync(int page, int pageSize = 10, Specification<TEntity>? spec = null, CancellationToken cancellationToken = default);
     }
 }
