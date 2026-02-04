@@ -2,7 +2,6 @@
 {
     public interface ITenantContext
     {
-        long TenantId { get; }
         long GetTenantId();
     }
 }
