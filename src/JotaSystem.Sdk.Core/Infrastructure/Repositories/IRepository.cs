@@ -1,14 +1,16 @@
-﻿namespace JotaSystem.Sdk.Core.Infrastructure.Repositories
+﻿using JotaSystem.Sdk.Core.Domain.Entities;
+
+namespace JotaSystem.Sdk.Core.Infrastructure.Repositories
 {
     /// <summary>
     /// Interface genérica de repositório base
     /// </summary>
     /// <typeparam name="TEntity">Tipo da entidade</typeparam>  
-    public interface IRepository<TEntity> : IReadOnlyRepository<TEntity> where TEntity : class
+    public interface IRepository<TEntity> 
+        where TEntity : class, IAggregateRoot
     {
-        // CRUD
         Task AddAsync(TEntity entity, CancellationToken cancellationToken = default);
-        Task UpdateAsync(TEntity entity, CancellationToken cancellationToken = default);
-        Task<bool> DeleteAsync(long id, bool softDelete = true, CancellationToken cancellationToken = default);
+        void Update(TEntity entity);
+        void Remove(TEntity entity);
     }
 }

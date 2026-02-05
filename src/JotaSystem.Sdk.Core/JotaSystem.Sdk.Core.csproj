@@ -8,7 +8,7 @@
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 
 		<PackageId>JotaSystem.Sdk.Core</PackageId>
-		<Version>1.0.51</Version>
+		<Version>1.0.52</Version>
 		<Authors>Jota System</Authors>
 		<Company>Jota System</Company>
 		<Product>Jota System SDK Core</Product>
