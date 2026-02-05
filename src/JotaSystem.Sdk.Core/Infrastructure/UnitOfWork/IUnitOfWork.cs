@@ -1,4 +1,6 @@
-﻿namespace JotaSystem.Sdk.Core.Infrastructure.UnitOfWork
+﻿using JotaSystem.Sdk.Core.Domain.Entities;
+
+namespace JotaSystem.Sdk.Core.Infrastructure.UnitOfWork
 {
     /// <summary>
     /// Representa uma unidade de trabalho (Unit of Work) 
@@ -12,5 +14,14 @@
         /// <param name="cancellationToken">Token opcional para cancelamento da operação.</param>
         /// <returns>O número de registros afetados.</returns>
         Task<int> CommitAsync(CancellationToken cancellationToken = default);
+
+        void Add<TEntity>(TEntity entity) 
+            where TEntity : class, IAggregateRoot;
+
+        void Update<TEntity>(TEntity entity)
+            where TEntity : class, IAggregateRoot;
+
+        void Remove<TEntity>(TEntity entity)
+            where TEntity : class, IAggregateRoot;
     }
 }
