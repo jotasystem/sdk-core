@@ -1,4 +1,5 @@
 ﻿using JotaSystem.Sdk.Core.Domain.Entities;
+using System.Linq.Expressions;
 
 namespace JotaSystem.Sdk.Core.Infrastructure.UnitOfWork
 {
@@ -15,7 +16,10 @@ namespace JotaSystem.Sdk.Core.Infrastructure.UnitOfWork
         /// <returns>O número de registros afetados.</returns>
         Task<int> CommitAsync(CancellationToken cancellationToken = default);
 
-        void Add<TEntity>(TEntity entity) 
+        Task AddAsync<TEntity>(TEntity entity, CancellationToken cancellationToken = default) 
+            where TEntity : class, IAggregateRoot;
+
+        Task<TEntity?> GetForUpdateAsync<TEntity>(Expression<Func<TEntity, bool>> filter, CancellationToken ct = default)
             where TEntity : class, IAggregateRoot;
 
         void Update<TEntity>(TEntity entity)
