@@ -8,7 +8,7 @@
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 
 		<PackageId>JotaSystem.Sdk.Core</PackageId>
-		<Version>1.0.48</Version>
+		<Version>1.0.49</Version>
 		<Authors>Jota System</Authors>
 		<Company>Jota System</Company>
 		<Product>Jota System SDK Core</Product>
@@ -38,6 +38,7 @@
 		<PackageReference Include="FluentValidation" Version="12.1.1" />
 		<PackageReference Include="JotaSystem.Sdk.Common" Version="1.0.23" />
 		<PackageReference Include="MediatR" Version="14.0.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.2" />
 		<PackageReference Include="QRCoder" Version="1.7.0" />
 		<PackageReference Include="SixLabors.ImageSharp" Version="3.1.12" />
 		<PackageReference Include="ZXing.Net" Version="0.16.11" />
