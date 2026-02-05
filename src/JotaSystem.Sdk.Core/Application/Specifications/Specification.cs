@@ -18,14 +18,25 @@ namespace JotaSystem.Sdk.Core.Application.Specifications
         public Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? OrderByDescending { get; protected set; }
 
         // 🔹 Paginação (opcional)
-        public int? Skip { get; protected set; }
-        public int? Take { get; protected set; }
-        public bool IsPagingEnabled => Skip.HasValue || Take.HasValue;
+        public int? Skip { get; private set; }
+        public int? Take { get; private set; }
+        public bool IsPagingEnabled => Skip.HasValue && Take.HasValue;
 
-        protected void ApplyPaging(int skip, int take)
+        private void ApplyPaging(int skip, int take)
         {
             Skip = skip;
             Take = take;
+        }
+
+        // 🔹 Conceito (application)
+        protected void ApplyPage(int page, int pageSize)
+        {
+            ArgumentOutOfRangeException.ThrowIfNegativeOrZero(page);
+            ArgumentOutOfRangeException.ThrowIfNegativeOrZero(pageSize);
+
+            ApplyPaging(
+                skip: (page - 1) * pageSize,
+                take: pageSize);
         }
     }
 }
