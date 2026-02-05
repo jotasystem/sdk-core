@@ -1,4 +1,5 @@
 ﻿using JotaSystem.Sdk.Core.Application.Specifications;
+using Microsoft.EntityFrameworkCore;
 
 namespace JotaSystem.Sdk.Core.Infrastructure.Specifications
 {
@@ -12,6 +13,14 @@ namespace JotaSystem.Sdk.Core.Infrastructure.Specifications
             // 🔹 Criteria
             if (specification.Criteria is not null)
                 query = query.Where(specification.Criteria);
+
+            // 🔹 Include simples
+            foreach (var include in specification.Includes)
+                query = query.Include(include);
+
+            // 🔹 Include com ThenInclude
+            foreach (var include in specification.IncludeExpressions)
+                query = include(query);
 
             // 🔹 Ordenação
             if (specification.OrderBy is not null)
