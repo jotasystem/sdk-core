@@ -11,12 +11,12 @@ namespace JotaSystem.Sdk.Core.Infrastructure.Repositories
     public interface IQueryRepository<TEntity> 
         where TEntity : class
     {
-        Task<TEntity?> FindByIdAsync(long id, CancellationToken cancellationToken = default);
-        Task<TEntity?> FindByExternalIdAsync(Guid externalId, CancellationToken cancellationToken = default);
+        Task<TEntity?> GetByIdAsync(long id, CancellationToken cancellationToken = default);
+        Task<TEntity?> GetByExternalIdAsync(Guid externalId, CancellationToken cancellationToken = default);
         Task<bool> ExistsAsync(Expression<Func<TEntity, bool>> filter, CancellationToken cancellationToken = default);
         Task<int> CountAsync(Expression<Func<TEntity, bool>>? filter = null, CancellationToken cancellationToken = default);
         Task<TEntity?> FirstOrDefaultAsync(Expression<Func<TEntity, bool>>? filter = null, CancellationToken cancellationToken = default);
-        Task<IList<TEntity>> GetAsync(Specification<TEntity>? specification = null, CancellationToken cancellationToken = default);
+        Task<IReadOnlyList<TEntity>> GetListAsync(Specification<TEntity>? specification = null, CancellationToken cancellationToken = default);
         Task<PaginatedList<TEntity>> GetPagedAsync(Specification<TEntity> specification, CancellationToken cancellationToken = default);
     }
 }

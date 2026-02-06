@@ -1,7 +1,4 @@
-﻿using JotaSystem.Sdk.Core.Domain.Entities;
-using System.Linq.Expressions;
-
-namespace JotaSystem.Sdk.Core.Infrastructure.UnitOfWork
+﻿namespace JotaSystem.Sdk.Core.Infrastructure.UnitOfWork
 {
     /// <summary>
     /// Representa uma unidade de trabalho (Unit of Work) 
@@ -15,17 +12,5 @@ namespace JotaSystem.Sdk.Core.Infrastructure.UnitOfWork
         /// <param name="cancellationToken">Token opcional para cancelamento da operação.</param>
         /// <returns>O número de registros afetados.</returns>
         Task<int> CommitAsync(CancellationToken cancellationToken = default);
-
-        Task AddAsync<TEntity>(TEntity entity, CancellationToken cancellationToken = default) 
-            where TEntity : class, IAggregateRoot;
-
-        Task<TEntity?> GetForUpdateAsync<TEntity>(Expression<Func<TEntity, bool>> filter, CancellationToken ct = default)
-            where TEntity : class, IAggregateRoot;
-
-        void Update<TEntity>(TEntity entity)
-            where TEntity : class, IAggregateRoot;
-
-        void Remove<TEntity>(TEntity entity)
-            where TEntity : class, IAggregateRoot;
     }
 }
