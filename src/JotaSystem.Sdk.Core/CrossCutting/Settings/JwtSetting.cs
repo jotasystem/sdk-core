@@ -2,7 +2,7 @@
 
 namespace JotaSystem.Sdk.Core.CrossCutting.Settings
 {
-    public class JwtSettings
+    public class JwtSetting
     {
         [Required] public string Issuer { get; set; } = string.Empty;
         [Required] public string Audience { get; set; } = string.Empty;

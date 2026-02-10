@@ -8,7 +8,7 @@
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 
 		<PackageId>JotaSystem.Sdk.Core</PackageId>
-		<Version>1.0.55</Version>
+		<Version>1.0.56</Version>
 		<Authors>Jota System</Authors>
 		<Company>Jota System</Company>
 		<Product>Jota System SDK Core</Product>
@@ -36,11 +36,15 @@
 
 	<ItemGroup>
 		<PackageReference Include="FluentValidation" Version="12.1.1" />
-		<PackageReference Include="JotaSystem.Sdk.Common" Version="1.0.23" />
+		<PackageReference Include="JotaSystem.Sdk.Common" Version="1.0.38" />
+		<PackageReference Include="JotaSystem.Sdk.Localization" Version="1.0.1" />
 		<PackageReference Include="MediatR" Version="14.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.2" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.2" />
 		<PackageReference Include="QRCoder" Version="1.7.0" />
+		<PackageReference Include="Serilog.AspNetCore" Version="10.0.0" />
 		<PackageReference Include="SixLabors.ImageSharp" Version="3.1.12" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="10.1.2" />
 		<PackageReference Include="ZXing.Net" Version="0.16.11" />
 		<PackageReference Include="ZXing.Net.Bindings.ImageSharp" Version="0.16.16" />
 	</ItemGroup>

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace JotaSystem.Sdk.Core.CrossCutting.Settings
 {
-    public class PaymentSettings
+    public class PaymentSetting
     {
         [Required] 
         public PaymentProviderType Provider { get; set; }

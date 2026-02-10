@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace JotaSystem.Sdk.Core.CrossCutting.Settings
 {
-    public class EmailSettings
+    public class EmailSetting
     {
         [Required]
         public EmailProviderType Provider { get; set; } = EmailProviderType.Smtp;

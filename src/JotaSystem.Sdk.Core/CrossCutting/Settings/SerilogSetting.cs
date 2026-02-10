@@ -2,7 +2,7 @@
 
 namespace JotaSystem.Sdk.Core.CrossCutting.Settings
 {
-    public class SerilogSettings
+    public class SerilogSetting
     {
         public List<string>? Using { get; set; }
 
