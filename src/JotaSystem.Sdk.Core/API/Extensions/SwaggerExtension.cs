@@ -1,7 +1,10 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi;
+using Swashbuckle.AspNetCore.SwaggerUI;
 using System.Reflection;
 
 namespace JotaSystem.Sdk.Core.API.Extensions
@@ -37,15 +40,9 @@ namespace JotaSystem.Sdk.Core.API.Extensions
                     Description = "Informe apenas o token JWT (sem o prefixo 'Bearer')."
                 });
 
-                c.AddSecurityRequirement(document =>
+                c.AddSecurityRequirement(doc => new OpenApiSecurityRequirement
                 {
-                    return new OpenApiSecurityRequirement
-                    {
-                        {
-                            new OpenApiSecuritySchemeReference("Bearer"),
-                            new List<string>()
-                        }
-                    };
+                    [new OpenApiSecuritySchemeReference(JwtBearerDefaults.AuthenticationScheme, doc)] = []
                 });
 
                 var xml = $"{Assembly.GetEntryAssembly()?.GetName().Name}.xml";
@@ -64,6 +61,7 @@ namespace JotaSystem.Sdk.Core.API.Extensions
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Jota System API v1");
                 c.RoutePrefix = "swagger";
+                c.DocExpansion(DocExpansion.None);
             });
 
             return app;
