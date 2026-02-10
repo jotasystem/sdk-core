@@ -11,9 +11,9 @@ namespace JotaSystem.Sdk.Core.API.Extensions
     {
         public static IServiceCollection AddJwtAuthentication(this IServiceCollection services, IConfiguration configuration)
         {
-            services.Configure<JwtSetting>(configuration.GetSection("AppSettings:Jwt"));
-            var jwt = configuration.GetSection("AppSettings:Jwt").Get<JwtSetting>()
-                      ?? throw new InvalidOperationException("Configuração AppSettings:Jwt não encontrada.");
+            services.Configure<JwtSetting>(configuration.GetSection("JwtSetting"));
+            var jwt = configuration.GetSection("JwtSetting").Get<JwtSetting>()
+                      ?? throw new InvalidOperationException("JwtSetting not found.");
 
             services
                 .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
