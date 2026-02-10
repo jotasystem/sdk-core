@@ -1,14 +1,11 @@
 ﻿using Microsoft.AspNetCore.Builder;
-using Serilog;
 
 namespace JotaSystem.Sdk.Core.API.Extensions
 {
     public static class PipelineExtensions
     {
-        public static WebApplication UseDefaults(this WebApplication app)
+        public static WebApplication UseApiDefaults(this WebApplication app)
         {
-            app.UseSerilogRequestLogging();
-
             app.UseHttpsRedirection();
 
             app.UseCors(CorsExtension.DefaultCorsPolicy);
