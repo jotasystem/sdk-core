@@ -17,7 +17,7 @@ namespace JotaSystem.Sdk.Core.Infrastructure.UnitOfWork
         /// <returns>O número de registros afetados.</returns>
         Task<int> CommitAsync(CancellationToken cancellationToken = default);
 
-        Task<TEntity?> GetForUpdateAsync<TEntity>(Expression<Func<TEntity, bool>> filter, Specification<TEntity> specification, CancellationToken cancellationToken = default)
+        Task<TEntity?> GetForUpdateAsync<TEntity>(Specification<TEntity> specification, CancellationToken cancellationToken = default)
             where TEntity : class, IAggregateRoot;
 
         void Add<TEntity>(TEntity entity) where TEntity : class, IAggregateRoot;
