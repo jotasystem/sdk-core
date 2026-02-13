@@ -1,20 +1,22 @@
-﻿using JotaSystem.Sdk.Core.Domain.Entities;
+﻿using JotaSystem.Sdk.Core.Application.Specifications;
+using JotaSystem.Sdk.Core.CrossCutting.Models;
 using System.Linq.Expressions;
 
 namespace JotaSystem.Sdk.Core.Infrastructure.Repositories
 {
     /// <summary>
-    /// Interface genérica de repositório base
+    /// Interface genérica de repositório (somente leitura)
     /// </summary>
-    /// <typeparam name="TEntity">Tipo da entidade</typeparam>  
+    /// <typeparam name="TEntity">Tipo da entidade</typeparam>
     public interface IRepository<TEntity> 
-        where TEntity : class, IAggregateRoot
+        where TEntity : class
     {
-        Task<TEntity?> GetAsync(Expression<Func<TEntity, bool>> filter, CancellationToken cancellationToken = default);
+        Task<bool> ExistsAsync(Expression<Func<TEntity, bool>> filter, CancellationToken cancellationToken = default);
+        Task<int> CountAsync(Expression<Func<TEntity, bool>>? filter = null, CancellationToken cancellationToken = default);
 
-        Task AddAsync(TEntity entity, CancellationToken cancellationToken = default);
-        void Update(TEntity entity);
-        void Remove(TEntity entity);
-        void HardRemove(TEntity entity);
+        Task<TEntity?> GetByIdAsync(long id, CancellationToken cancellationToken = default);
+        Task<TEntity?> GetSingleAsync(Specification<TEntity>? specification = null, CancellationToken cancellationToken = default);
+        Task<IReadOnlyList<TEntity>> GetListAsync(Specification<TEntity>? specification = null, CancellationToken cancellationToken = default);
+        Task<PaginatedList<TEntity>> GetPagedAsync(Specification<TEntity> specification, CancellationToken cancellationToken = default);
     }
 }
