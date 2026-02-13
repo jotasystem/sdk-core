@@ -12,16 +12,7 @@ namespace JotaSystem.Sdk.Core.Domain.Entities.Base
         public bool IsDeleted { get; protected set; }
         public DateTime? DeletedAt { get; protected set; }
 
-        /// <summary>
-        /// Coluna de controle de concorrência (RowVersion / Timestamp).
-        /// O valor é gerenciado automaticamente pelo ORM/banco.
-        /// Útil para detectar atualizações simultâneas e evitar sobrescrita de dados.
-        /// </summary>
-        [Timestamp]
-        public byte[]? RowVersion { get; protected set; }
-
-
-        public void SetTenant(long tenantId) => TenantId = tenantId;
+        public virtual void SetTenant(long tenantId) => TenantId = tenantId;
 
         public void SetStatus(EntityStatusEnum status) => Status = status;
 
