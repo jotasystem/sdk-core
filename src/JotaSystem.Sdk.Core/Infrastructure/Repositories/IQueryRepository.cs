@@ -15,7 +15,7 @@ namespace JotaSystem.Sdk.Core.Infrastructure.Repositories
         Task<TEntity?> GetByExternalIdAsync(Guid externalId, CancellationToken cancellationToken = default);
         Task<bool> ExistsAsync(Expression<Func<TEntity, bool>> filter, CancellationToken cancellationToken = default);
         Task<int> CountAsync(Expression<Func<TEntity, bool>>? filter = null, CancellationToken cancellationToken = default);
-        Task<TEntity?> FirstOrDefaultAsync(Expression<Func<TEntity, bool>>? filter = null, CancellationToken cancellationToken = default);
+        Task<TEntity?> GetSingleAsync(Specification<TEntity>? specification = null, CancellationToken cancellationToken = default);
         Task<IReadOnlyList<TEntity>> GetListAsync(Specification<TEntity>? specification = null, CancellationToken cancellationToken = default);
         Task<PaginatedList<TEntity>> GetPagedAsync(Specification<TEntity> specification, CancellationToken cancellationToken = default);
     }
