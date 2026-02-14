@@ -24,5 +24,10 @@ namespace JotaSystem.Sdk.Core.Infrastructure.UnitOfWork
         void Update<TEntity>(TEntity entity) where TEntity : class, IAggregateRoot;
         void Remove<TEntity>(TEntity entity) where TEntity : class, IAggregateRoot;
         void HardRemove<TEntity>(TEntity entity) where TEntity : class, IAggregateRoot;
+
+        void RemoveDependent<TEntity>(TEntity entity) where TEntity : class;
+        void RemoveDependents<TEntity>(IEnumerable<TEntity> entities) where TEntity : class;
+        void HardRemoveDependent<TEntity>(TEntity entity) where TEntity : class;
+        void HardRemoveDependents<TEntity>(IEnumerable<TEntity> entities) where TEntity : class;
     }
 }
