@@ -3,7 +3,7 @@ using JotaSystem.Sdk.Core.CrossCutting.Providers.Responses;
 
 namespace JotaSystem.Sdk.Core.CrossCutting.Providers
 {
-    public interface IFileStorage
+    public interface IStorageProvider
     {
         Task<StorageUploadUrlResponse> GetUploadUrlAsync(StorageUploadUrlRequest request, CancellationToken cancellationToken = default);
         Task<StorageDownloadUrlResponse> GetDownloadUrlAsync(StorageDownloadUrlRequest request, CancellationToken cancellationToken = default);
