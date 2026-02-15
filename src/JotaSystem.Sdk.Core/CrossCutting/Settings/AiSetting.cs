@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace JotaSystem.Sdk.Core.CrossCutting.Settings
 {
-    public class AiSettings
+    public class AiSetting
     {
         [Required]
         public AiProviderEnum Provider { get; set; } = AiProviderEnum.OpenAi;
