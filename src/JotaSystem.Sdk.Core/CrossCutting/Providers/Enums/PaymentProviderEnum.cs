@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 
-namespace JotaSystem.Sdk.Core.CrossCutting.Providers
+namespace JotaSystem.Sdk.Core.CrossCutting.Providers.Enum
 {
-    public enum PaymentProviderType
+    public enum PaymentProviderEnum
     {
         [Display(Name = "Mercado Pago")]
         [EnumMember(Value = "mercado_pago")]

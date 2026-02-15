@@ -1,4 +1,4 @@
-﻿using JotaSystem.Sdk.Core.CrossCutting.Providers;
+﻿using JotaSystem.Sdk.Core.CrossCutting.Providers.Enum;
 using System.ComponentModel.DataAnnotations;
 
 namespace JotaSystem.Sdk.Core.CrossCutting.Settings
@@ -6,7 +6,7 @@ namespace JotaSystem.Sdk.Core.CrossCutting.Settings
     public class AiSettings
     {
         [Required]
-        public AiProviderType Provider { get; set; } = AiProviderType.OpenAi;
+        public AiProviderEnum Provider { get; set; } = AiProviderEnum.OpenAi;
 
         // Configurações específicas de cada provider
         public OpenAiSetting? OpenAi { get; set; }

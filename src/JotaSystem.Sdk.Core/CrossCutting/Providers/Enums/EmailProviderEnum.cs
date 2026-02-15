@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 
-namespace JotaSystem.Sdk.Core.CrossCutting.Providers
+namespace JotaSystem.Sdk.Core.CrossCutting.Providers.Enum
 {
-    public enum EmailProviderType
+    public enum EmailProviderEnum
     {
         [Display(Name = "SMTP Padrão")]
         [EnumMember(Value = "smtp")]

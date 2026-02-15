@@ -1,4 +1,4 @@
-﻿using JotaSystem.Sdk.Core.CrossCutting.Providers;
+﻿using JotaSystem.Sdk.Core.CrossCutting.Providers.Enum;
 using System.ComponentModel.DataAnnotations;
 
 namespace JotaSystem.Sdk.Core.CrossCutting.Settings
@@ -6,7 +6,7 @@ namespace JotaSystem.Sdk.Core.CrossCutting.Settings
     public class PaymentSetting
     {
         [Required] 
-        public PaymentProviderType Provider { get; set; }
+        public PaymentProviderEnum Provider { get; set; }
 
         // Configurações específicas de cada provider
         public MercadoPagoSetting? MercadoPago { get; set; }

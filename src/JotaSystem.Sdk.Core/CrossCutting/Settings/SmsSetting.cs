@@ -1,4 +1,4 @@
-﻿using JotaSystem.Sdk.Core.CrossCutting.Providers;
+﻿using JotaSystem.Sdk.Core.CrossCutting.Providers.Enum;
 using System.ComponentModel.DataAnnotations;
 
 namespace JotaSystem.Sdk.Core.CrossCutting.Settings
@@ -6,7 +6,7 @@ namespace JotaSystem.Sdk.Core.CrossCutting.Settings
     public class SmsSetting
     {
         [Required]
-        public SmsProviderType Provider { get; set; }
+        public SmsProviderEnum Provider { get; set; }
 
         // Configurações específicas por provider
         public TwilioSetting? Twilio { get; set; }

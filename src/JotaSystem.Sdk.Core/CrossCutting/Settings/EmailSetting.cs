@@ -1,4 +1,4 @@
-﻿using JotaSystem.Sdk.Core.CrossCutting.Providers;
+﻿using JotaSystem.Sdk.Core.CrossCutting.Providers.Enum;
 using System.ComponentModel.DataAnnotations;
 
 namespace JotaSystem.Sdk.Core.CrossCutting.Settings
@@ -6,7 +6,7 @@ namespace JotaSystem.Sdk.Core.CrossCutting.Settings
     public class EmailSetting
     {
         [Required]
-        public EmailProviderType Provider { get; set; } = EmailProviderType.Smtp;
+        public EmailProviderEnum Provider { get; set; } = EmailProviderEnum.Smtp;
 
         // Configurações específicas de cada provider
         public SmtpSetting? Smtp { get; set; }

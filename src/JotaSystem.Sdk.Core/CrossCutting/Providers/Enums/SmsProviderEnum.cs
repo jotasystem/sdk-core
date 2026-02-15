@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 
-namespace JotaSystem.Sdk.Core.CrossCutting.Providers
+namespace JotaSystem.Sdk.Core.CrossCutting.Providers.Enum
 {
-    public enum SmsProviderType
+    public enum SmsProviderEnum
     {
         // Principais no Brasil
         [Display(Name = "Twilio")]

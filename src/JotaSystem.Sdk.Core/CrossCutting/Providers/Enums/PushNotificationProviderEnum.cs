@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 
-namespace JotaSystem.Sdk.Core.CrossCutting.Providers
+namespace JotaSystem.Sdk.Core.CrossCutting.Providers.Enum
 {
-    public enum PushNotificationProviderType
+    public enum PushNotificationProviderEnum
     {
         [Display(Name = "Firebase Cloud Messaging (FCM)")]
         [EnumMember(Value = "fcm")]
