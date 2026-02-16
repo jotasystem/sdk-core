@@ -1,12 +1,8 @@
-﻿using JotaSystem.Sdk.Common.Enums;
-using System.ComponentModel.DataAnnotations;
-
-namespace JotaSystem.Sdk.Core.Domain.Entities.Base
+﻿namespace JotaSystem.Sdk.Core.Domain.Entities.Base
 {
     public abstract class TenantEntityBase : EntityBase, ITenantEntity, IAuditable, ISoftDelete
     {
         public long TenantId { get; protected set; }
-        public EntityStatusEnum Status { get; protected set; } = EntityStatusEnum.Active;
         public DateTime CreatedAt { get; protected set; } = DateTime.Now;
         public DateTime? UpdatedAt { get; protected set; }
         public bool IsDeleted { get; protected set; }
@@ -14,7 +10,6 @@ namespace JotaSystem.Sdk.Core.Domain.Entities.Base
 
         public virtual void SetTenant(long tenantId) => TenantId = tenantId;
 
-        public void SetStatus(EntityStatusEnum status) => Status = status;
 
         #region Auditable / SoftDelete
 
@@ -24,8 +19,7 @@ namespace JotaSystem.Sdk.Core.Domain.Entities.Base
         {
             if (IsDeleted) return;
             IsDeleted = true;
-            DeletedAt = DateTime.UtcNow;
-            SetStatus(EntityStatusEnum.Inactive);
+            DeletedAt = DateTime.Now;
         }
 
         public void Restore()
@@ -33,7 +27,6 @@ namespace JotaSystem.Sdk.Core.Domain.Entities.Base
             if (!IsDeleted) return;
             IsDeleted = false;
             DeletedAt = null;
-            SetStatus(EntityStatusEnum.Active);
         }
 
         #endregion
