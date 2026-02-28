@@ -4,9 +4,9 @@ namespace JotaSystem.Sdk.Core.CrossCutting.Models
 {
     public class CurrentUser
     {
-        public Guid UserId { get; set; }
+        public Guid UserUuid { get; set; }
         public long TenantId { get; set; }
-        public long? CompanyId { get; set; }
+        public long CompanyId { get; set; }
         public string UserName { get; set; } = string.Empty;
         public string Nickname { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
