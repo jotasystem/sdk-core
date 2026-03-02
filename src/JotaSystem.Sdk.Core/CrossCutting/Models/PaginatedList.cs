@@ -1,4 +1,6 @@
-﻿namespace JotaSystem.Sdk.Core.CrossCutting.Models
+﻿using JotaSystem.Sdk.Common.Constants;
+
+namespace JotaSystem.Sdk.Core.CrossCutting.Models
 {
     /// <summary>
     /// Modelo de paginação genérico contendo a lista de resultados
@@ -9,12 +11,12 @@
         /// <summary>
         /// Página atual (1-based)
         /// </summary>
-        public int CurrentPage { get; set; } = 1;
+        public int CurrentPage { get; set; } = AppConstant.DefaultPage;
 
         /// <summary>
         /// Número de itens por página
         /// </summary>
-        public int PageSize { get; set; } = 10;
+        public int PageSize { get; set; } = AppConstant.DefaultPage;
 
         /// <summary>
         /// Total de itens disponíveis
