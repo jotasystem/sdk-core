@@ -1,7 +1,7 @@
 ﻿using System.Linq.Expressions;
 using System.Reflection;
 
-namespace JotaSystem.Sdk.Core.Application.Queries.Base
+namespace JotaSystem.Sdk.Core.Application.Filters
 {
     public static class DynamicSorter
     {
@@ -21,7 +21,7 @@ namespace JotaSystem.Sdk.Core.Application.Queries.Base
             LambdaExpression keySelector = Expression.Lambda(propertyAccess, parameter);
 
             // Determinar método OrderBy ou OrderByDescending
-            string methodName = query.Descending ? "OrderByDescending" : "OrderBy";
+            string methodName = query.OrderByDescending ? "OrderByDescending" : "OrderBy";
 
             // Obter método genérico correto do Queryable
             MethodInfo method = typeof(Queryable)
