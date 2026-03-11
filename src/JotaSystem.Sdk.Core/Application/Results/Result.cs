@@ -6,7 +6,7 @@ namespace JotaSystem.Sdk.Core.Application.Results
 {
     public class Result
     {
-        public bool Success { get; }
+        public bool IsSuccess { get; }
         public int StatusCode { get; }
         public string Message { get; }
         public string? TraceId { get; }
@@ -16,7 +16,7 @@ namespace JotaSystem.Sdk.Core.Application.Results
 
         protected Result(bool success, int statusCode, string message, string? traceId, List<Notification>? errors)
         {
-            Success = success;
+            IsSuccess = success;
             StatusCode = statusCode;
             Message = message;
             TraceId = traceId;
