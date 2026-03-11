@@ -12,6 +12,7 @@ namespace JotaSystem.Sdk.Core.API.Extensions
         public static IServiceCollection AddJwtAuthentication(this IServiceCollection services, IConfiguration configuration)
         {
             services.Configure<JwtSetting>(configuration.GetSection("JwtSetting"));
+
             var jwt = configuration.GetSection("JwtSetting").Get<JwtSetting>()
                       ?? throw new InvalidOperationException("JwtSetting not found.");
 
@@ -27,7 +28,8 @@ namespace JotaSystem.Sdk.Core.API.Extensions
                         ValidAudience = jwt.Audience,
                         ValidateLifetime = true,
                         ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(jwt.SecretKey)),
+                        IssuerSigningKey = new SymmetricSecurityKey(
+                            Encoding.ASCII.GetBytes(jwt.SecretKey))
                     };
                 });
 

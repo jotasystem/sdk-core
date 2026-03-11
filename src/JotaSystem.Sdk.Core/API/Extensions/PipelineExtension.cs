@@ -15,12 +15,6 @@ namespace JotaSystem.Sdk.Core.API.Extensions
 
             app.MapControllers();
 
-            app.MapGet("/", context =>
-            {
-                context.Response.Redirect("/swagger");
-                return Task.CompletedTask;
-            });
-
             return app;
         }
     }
