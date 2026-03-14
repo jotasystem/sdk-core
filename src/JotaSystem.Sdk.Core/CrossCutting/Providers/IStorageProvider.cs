@@ -5,15 +5,10 @@ namespace JotaSystem.Sdk.Core.CrossCutting.Providers
 {
     public interface IStorageProvider
     {
-        Task<StorageUploadUrlResponse> GetUploadUrlAsync(StorageUploadUrlRequest request, CancellationToken cancellationToken = default);
-        Task<StorageDownloadUrlResponse> GetDownloadUrlAsync(StorageDownloadUrlRequest request, CancellationToken cancellationToken = default);
-        Task DeleteAsync(StorageDeleteFileRequest request, CancellationToken cancellationToken = default);
-        Task MoveAsync(StorageMoveFileRequest request, CancellationToken cancellationToken = default);
-    }
-
-    public enum FileAccessLevel
-    {
-        Private = 0,
-        Public = 1
+        Task<StorageUploadResponse> UploadAsync(StorageUploadRequest request, CancellationToken cancellationToken = default);
+        Task<StorageDownloadResponse> DownloadAsync(string path, CancellationToken cancellationToken = default);
+        Task DeleteAsync(string path, CancellationToken cancellationToken = default);
+        Task<StorageFileInfoResponse?> GetAsync(string path, CancellationToken cancellationToken = default);
+        Task<string> GetUrlAsync(string path, CancellationToken cancellationToken = default);
     }
 }
