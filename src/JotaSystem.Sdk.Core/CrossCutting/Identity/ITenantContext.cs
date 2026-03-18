@@ -3,5 +3,8 @@
     public interface ITenantContext
     {
         long GetTenantId();
+        string GetCulture();
+        string GetTimeZone();
+        string GetCurrency();
     }
 }
