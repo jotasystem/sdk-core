@@ -1,5 +1,4 @@
-﻿using JotaSystem.Sdk.Localization;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
@@ -17,8 +16,6 @@ namespace JotaSystem.Sdk.Core.API.Extensions
             {
                 var supportedCultures = sourceCultures.Select(c => new CultureInfo(c)).ToList();
                 var defaultCulture = supportedCultures[0];
-
-                LanguageProvider.SetDefault(LanguageProvider.FromCulture(defaultCulture));
 
                 options.DefaultRequestCulture = new RequestCulture(defaultCulture);
                 options.SupportedCultures = supportedCultures;
@@ -41,17 +38,6 @@ namespace JotaSystem.Sdk.Core.API.Extensions
                 .GetRequiredService<IOptions<RequestLocalizationOptions>>().Value;
 
             app.UseRequestLocalization(options);
-
-            // mantém seu LanguageProvider em sincronia com a cultura da request
-            app.Use(async (context, next) =>
-            {
-                var feature = context.Features.Get<IRequestCultureFeature>();
-                if (feature != null)
-                    LanguageProvider.SetDefault(LanguageProvider.FromCulture(feature.RequestCulture.Culture));
-
-                await next();
-            });
-
             return app;
         }
     }
