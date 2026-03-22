@@ -1,21 +1,22 @@
 ﻿using JotaSystem.Sdk.Core.CrossCutting.Models;
-using System.Security.Claims;
 
 namespace JotaSystem.Sdk.Core.CrossCutting.Identity
 {
-    public interface IUserContext
+    public interface ICurrentContext
     {
         bool IsAuthenticated { get; }
+        CurrentUser GetUser();
 
-        CurrentUser Get();
+        long GetTenantId();
+        long GetCurrentCompanyId();
+        string GetCulture();
+        string GetTimeZone();
+        string GetCurrency();
+        string GetColor();
+        string GetLogo();
 
         bool IsInRole(string role);
         bool HasPermission(string permission);
         bool HasCompanyAccess(long companyId);
-        bool HasCurrentCompany();
-
-
-        // Gerar claims para o JWT
-        IEnumerable<Claim> GetClaimsFor(CurrentUser user);
     }
 }

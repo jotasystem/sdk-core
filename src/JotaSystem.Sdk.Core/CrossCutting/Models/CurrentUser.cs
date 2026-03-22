@@ -4,30 +4,28 @@ namespace JotaSystem.Sdk.Core.CrossCutting.Models
 {
     public class CurrentUser
     {
-        public long UserId { get; set; }
-        public UserTypeEnum UserType { get; set; }
+        public UserTypeEnum UserType { get; init; }
+        public long UserId { get; init; }
+        public Guid UserUuid { get; init; }
+        public string Username { get; init; } = default!;
+        public string Nickname { get; init; } = default!;
+        public string Email { get; init; } = default!;
+        public string PhoneNumber { get; init; } = default!;
+        public string Picture { get; init; } = default!;
 
-        public long TenantId { get; set; }
-        public string TenantImage { get; set; } = default!;
-        public string TenantColor { get; set; } = default!;
+        public bool HasFullAccess { get; init; }
 
-        public long? CurrentCompanyId { get; set; }
-        public long? DefaultCompanyId { get; set; }
-        public IReadOnlyCollection<long> AllowedCompanyIds { get; set; } = [];
+        public long TenantId { get; init; }
+        public long CurrentCompanyId { get; init; }
+        public IReadOnlyCollection<long> AllowedCompaniesIds { get; init; } = [];
 
-        public string Username { get; set; } = default!;
-        public string Nickname { get; set; } = default!;
-        public string Email { get; set; } = default!;
-        public string PhoneNumber { get; set; } = default!;
-        public string Picture { get; set; } = default!;
-        public bool HasFullAccess { get; set; }
+        public string Culture { get; init; } = default!;
+        public string TimeZone { get; init; } = default!;
+        public string Currency { get; init; } = default!;
+        public string Color { get; init; } = default!;
+        public string Logo { get; init; } = default!;
 
-        public string Culture { get; set; } = string.Empty;
-        public string TimeZone { get; set; } = string.Empty;
-        public string Currency { get; set; } = string.Empty;
-
-        public IReadOnlyCollection<string> Roles { get; set; } = [];
-        public IReadOnlyCollection<string> Permissions { get; set; } = [];
-
+        public IReadOnlyCollection<string> Roles { get; init; } = [];
+        public IReadOnlyCollection<string> Permissions { get; init; } = [];
     }
 }
