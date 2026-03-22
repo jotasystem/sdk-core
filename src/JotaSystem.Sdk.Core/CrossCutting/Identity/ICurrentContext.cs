@@ -1,4 +1,5 @@
-﻿using JotaSystem.Sdk.Core.CrossCutting.Models;
+﻿using JotaSystem.Sdk.Common.Enums;
+using JotaSystem.Sdk.Core.CrossCutting.Models;
 
 namespace JotaSystem.Sdk.Core.CrossCutting.Identity
 {
@@ -8,6 +9,7 @@ namespace JotaSystem.Sdk.Core.CrossCutting.Identity
         CurrentUser GetUser();
 
         long GetTenantId();
+        CompanyTypeEnum GetCurrentCompanyType();
         long GetCurrentCompanyId();
         string GetCulture();
         string GetTimeZone();
@@ -16,7 +18,8 @@ namespace JotaSystem.Sdk.Core.CrossCutting.Identity
         string GetLogo();
 
         bool IsInRole(string role);
-        bool HasPermission(string permission);
+        bool IsPermissionScopeAllowed(AccessScopeEnum scope);
+        bool HasPermission(string permission, AccessScopeEnum scope);
         bool HasCompanyAccess(long companyId);
     }
 }

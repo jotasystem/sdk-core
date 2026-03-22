@@ -16,6 +16,7 @@ namespace JotaSystem.Sdk.Core.CrossCutting.Models
         public bool HasFullAccess { get; init; }
 
         public long TenantId { get; init; }
+        public CompanyTypeEnum CurrentCompanyType { get; init; }
         public long CurrentCompanyId { get; init; }
         public IReadOnlyCollection<long> AllowedCompaniesIds { get; init; } = [];
 
