@@ -8,7 +8,7 @@
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 
 		<PackageId>JotaSystem.Sdk.Core</PackageId>
-		<Version>1.0.80</Version>
+		<Version>1.0.81</Version>
 		<Authors>Jota System</Authors>
 		<Company>Jota System</Company>
 		<Product>Jota System SDK Core</Product>
@@ -43,10 +43,10 @@
 		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.5" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.5" />
 		<PackageReference Include="QRCoder" Version="1.7.0" />
-		<PackageReference Include="Scalar.AspNetCore" Version="2.13.13" />
+		<PackageReference Include="Scalar.AspNetCore" Version="2.13.15" />
 		<PackageReference Include="Serilog.AspNetCore" Version="10.0.0" />
 		<PackageReference Include="SixLabors.ImageSharp" Version="3.1.12" />
-		<PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="10.1.5" />
+		<PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="10.1.6" />
 		<PackageReference Include="ZXing.Net" Version="0.16.11" />
 		<PackageReference Include="ZXing.Net.Bindings.ImageSharp" Version="0.16.16" />
 	</ItemGroup>
