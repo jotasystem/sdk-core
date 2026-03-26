@@ -5,6 +5,7 @@
         AuditContext Current { get; }
 
         void Start(AuditDefinition definition, AuditPayload? payload = null);
+        void SetPayload(AuditPayload? payload);
         void SetDescription(string? description);
         void SetEntity(long? entityId);
         void SetOldValues(object? oldValues);
