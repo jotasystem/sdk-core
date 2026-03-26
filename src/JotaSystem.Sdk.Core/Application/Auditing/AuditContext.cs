@@ -2,9 +2,8 @@
 {
     public sealed class AuditContext
     {
-        public string Category { get; set; } = default!;
-        public string EventType { get; set; } = default!;
         public string EntityName { get; set; } = default!;
+        public string Action { get; set; } = default!;
         public string? Description { get; set; }
 
         public bool LogOnSuccess { get; set; }
