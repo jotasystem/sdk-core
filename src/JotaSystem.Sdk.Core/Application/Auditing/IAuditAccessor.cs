@@ -1,6 +1,6 @@
 ﻿namespace JotaSystem.Sdk.Core.Application.Auditing
 {
-    public interface IAuditEnvironmentAccessor
+    public interface IAuditAccessor
     {
         long? GetUserId();
         string? GetUsername();
