@@ -2,6 +2,6 @@
 {
     public interface IAuthorizedRequest
     {
-        IReadOnlyCollection<string> RequiredPermissions { get; }
+        AuthorizationDefinition Authorization { get; }
     }
 }
