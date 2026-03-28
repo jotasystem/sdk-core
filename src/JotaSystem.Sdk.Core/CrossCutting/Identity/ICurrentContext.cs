@@ -18,8 +18,7 @@ namespace JotaSystem.Sdk.Core.CrossCutting.Identity
         string GetLogo();
 
         bool IsInRole(string role);
-        bool IsPermissionScopeAllowed(AccessScopeEnum scope);
-        bool HasPermission(string permission, AccessScopeEnum scope);
+        bool HasPermission(string permission);
         bool HasCompanyAccess(long companyId);
     }
 }
