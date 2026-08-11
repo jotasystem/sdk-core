@@ -8,7 +8,7 @@
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 
 		<PackageId>JotaSystem.Sdk.Core</PackageId>
-		<Version>1.0.87</Version>
+		<Version>1.0.88</Version>
 		<Authors>Jota System</Authors>
 		<Company>Jota System</Company>
 		<Product>Jota System SDK Core</Product>
@@ -36,15 +36,15 @@
 
 	<ItemGroup>
 		<PackageReference Include="FluentValidation" Version="12.1.1" />
-		<PackageReference Include="JotaSystem.Sdk.Common" Version="1.0.70" />
-		<PackageReference Include="JotaSystem.Sdk.Localization" Version="1.0.2" />
+		<PackageReference Include="JotaSystem.Sdk.Common" Version="1.0.71" />
+		<PackageReference Include="JotaSystem.Sdk.Localization" Version="1.0.4" />
 		<PackageReference Include="MediatR" Version="14.2.0" />
-		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.10" />
-		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.10" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.10" />
-		<PackageReference Include="Microsoft.OpenApi" Version="2.7.5" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.11" />
+		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.11" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.11" />
+		<PackageReference Include="Microsoft.OpenApi" Version="2.11.0" />
 		<PackageReference Include="QRCoder" Version="1.8.0" />
-		<PackageReference Include="Scalar.AspNetCore" Version="2.16.16" />
+		<PackageReference Include="Scalar.AspNetCore" Version="2.16.18" />
 		<PackageReference Include="Serilog.AspNetCore" Version="10.0.0" />
 		<PackageReference Include="SixLabors.ImageSharp" Version="3.1.12" />
 		<PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="10.2.3" />
