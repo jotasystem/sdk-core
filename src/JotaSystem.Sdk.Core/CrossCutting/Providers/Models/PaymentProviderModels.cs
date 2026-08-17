@@ -29,15 +29,24 @@ namespace JotaSystem.Sdk.Core.CrossCutting.Providers.Models
         string? Email = null,
         string? Phone = null);
 
-    public sealed record PaymentProviderQuery(string ProviderKey, string TransactionId, string? Reference = null);
+    public sealed record PaymentProviderQuery(
+        string ProviderKey,
+        string TransactionId,
+        string? Reference = null,
+        PaymentProviderContext? Context = null);
 
-    public sealed record PaymentProviderOperation(string ProviderKey, string TransactionId, string? Reason = null);
+    public sealed record PaymentProviderOperation(
+        string ProviderKey,
+        string TransactionId,
+        string? Reason = null,
+        PaymentProviderContext? Context = null);
 
     public sealed record PaymentProviderRefund(
         string ProviderKey,
         string TransactionId,
         decimal? Amount = null,
-        string? Reason = null);
+        string? Reason = null,
+        PaymentProviderContext? Context = null);
 
     public sealed record PaymentProviderResult(
         bool IsSuccess,
@@ -58,7 +67,8 @@ namespace JotaSystem.Sdk.Core.CrossCutting.Providers.Models
         string ProviderKey,
         string Payload,
         IReadOnlyDictionary<string, string> Headers,
-        string? WebhookSecret = null);
+        string? WebhookSecret = null,
+        PaymentProviderContext? Context = null);
 
     public sealed record PaymentWebhookEvent(
         string ProviderKey,
