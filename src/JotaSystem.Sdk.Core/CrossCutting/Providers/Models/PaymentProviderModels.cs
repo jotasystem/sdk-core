@@ -14,7 +14,14 @@ namespace JotaSystem.Sdk.Core.CrossCutting.Providers.Models
         Uri? CallbackUrl = null,
         Uri? ReturnUrl = null,
         DateTimeOffset? ExpiresAt = null,
-        IReadOnlyDictionary<string, string>? Metadata = null);
+        IReadOnlyDictionary<string, string>? Metadata = null,
+        PaymentProviderContext? Context = null);
+
+    public sealed record PaymentProviderContext(
+        string Environment,
+        string? PublicConfigJson = null,
+        string? SecretReference = null,
+        string? WebhookSecretReference = null);
 
     public sealed record PaymentCustomer(
         string Name,
