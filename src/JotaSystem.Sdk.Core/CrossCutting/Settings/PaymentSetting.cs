@@ -67,6 +67,12 @@ namespace JotaSystem.Sdk.Core.CrossCutting.Settings
             [Required] public string MerchantId { get; set; } = string.Empty;
             [Required] public string MerchantKey { get; set; } = string.Empty;
             public bool Sandbox { get; set; } = true;
+
+            /// <summary>ClientId do OAuth2, exigido apenas para capturar o cartão no navegador.</summary>
+            public string? ClientId { get; set; }
+
+            /// <summary>ClientSecret do OAuth2, par do <see cref="ClientId"/>.</summary>
+            public string? ClientSecret { get; set; }
         }
 
         public class StoneSetting

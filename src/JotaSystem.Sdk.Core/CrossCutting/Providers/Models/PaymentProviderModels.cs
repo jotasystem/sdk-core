@@ -48,8 +48,10 @@ namespace JotaSystem.Sdk.Core.CrossCutting.Providers.Models
         string? Country = "BRA");
 
     /// <summary>
-    /// Dados do cartao usados na cobranca. Informe <see cref="Token"/> quando o cartao ja
-    /// estiver tokenizado no gateway; caso contrario, informe os dados completos.
+    /// Dados do cartao usados na cobranca, em ordem de preferencia:
+    /// <see cref="SingleUseToken"/>, gerado no navegador do comprador pelo script do gateway;
+    /// <see cref="Token"/>, de um cartao ja armazenado no cofre do gateway;
+    /// ou, em ultimo caso, os dados completos do cartao.
     /// </summary>
     /// <remarks>
     /// O numero e o codigo de seguranca nao sao serializados e nao aparecem no
@@ -63,13 +65,15 @@ namespace JotaSystem.Sdk.Core.CrossCutting.Providers.Models
         string? ExpirationDate = null,
         [property: JsonIgnore] string? SecurityCode = null,
         string? Brand = null,
-        bool SaveCard = false)
+        bool SaveCard = false,
+        string? SingleUseToken = null)
     {
         private const int VisiblePrefixLength = 6;
         private const int VisibleSuffixLength = 4;
 
-        /// <summary>Indica que a cobranca usa um cartao ja tokenizado no gateway.</summary>
-        public bool IsTokenized => !string.IsNullOrWhiteSpace(Token);
+        /// <summary>Indica que a cobranca usa um token no lugar dos dados do cartao.</summary>
+        public bool IsTokenized =>
+            !string.IsNullOrWhiteSpace(Token) || !string.IsNullOrWhiteSpace(SingleUseToken);
 
         /// <summary>Numero do cartao mascarado, seguro para auditoria e para exibicao.</summary>
         public string? MaskedNumber => Mask(Number);
@@ -103,6 +107,32 @@ namespace JotaSystem.Sdk.Core.CrossCutting.Providers.Models
         DateOnly? StartDate = null,
         DateOnly? EndDate = null,
         bool ChargeImmediately = true);
+
+    /// <summary>
+    /// Pedido de abertura de uma sessao de checkout no gateway. A sessao autoriza o
+    /// script do gateway, no navegador do comprador, a receber os dados do cartao e
+    /// devolver um token de uso unico.
+    /// </summary>
+    public sealed record PaymentCheckoutSessionRequest(
+        string ProviderKey,
+        decimal? Amount = null,
+        string? Currency = null,
+        string? Reference = null,
+        PaymentProviderContext? Context = null);
+
+    /// <summary>
+    /// Sessao de checkout aberta no gateway. Entregue <see cref="AccessToken"/>,
+    /// <see cref="ScriptUrl"/> e <see cref="Environment"/> ao navegador; nenhum desses
+    /// valores da acesso a operacoes na conta do lojista.
+    /// </summary>
+    public sealed record PaymentCheckoutSession(
+        bool IsSuccess,
+        string? AccessToken = null,
+        string? ScriptUrl = null,
+        string? Environment = null,
+        DateTimeOffset? ExpiresAt = null,
+        string? Message = null,
+        IReadOnlyDictionary<string, string>? Metadata = null);
 
     public sealed record PaymentProviderQuery(
         string ProviderKey,

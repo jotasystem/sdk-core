@@ -4,6 +4,18 @@ namespace JotaSystem.Sdk.Core.CrossCutting.Providers
 {
     public interface IPaymentProvider
     {
+        /// <summary>
+        /// Abre uma sessao de checkout para que o navegador do comprador envie os dados do
+        /// cartao direto ao gateway e devolva um token de uso unico. Gateways sem suporte a
+        /// captura no navegador devolvem <c>IsSuccess</c> falso.
+        /// </summary>
+        Task<PaymentCheckoutSession> CreateCheckoutSessionAsync(
+            PaymentCheckoutSessionRequest request,
+            CancellationToken cancellationToken = default) =>
+            Task.FromResult(new PaymentCheckoutSession(
+                false,
+                Message: "O gateway selecionado nao oferece captura de cartao no navegador."));
+
         Task<PaymentProviderResult> CreateAsync(PaymentProviderRequest request, CancellationToken cancellationToken = default);
         Task<PaymentProviderResult> GetAsync(PaymentProviderQuery query, CancellationToken cancellationToken = default);
         Task<PaymentProviderResult> CancelAsync(PaymentProviderOperation operation, CancellationToken cancellationToken = default);
