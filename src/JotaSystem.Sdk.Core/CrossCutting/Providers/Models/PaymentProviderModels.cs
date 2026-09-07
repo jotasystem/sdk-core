@@ -20,11 +20,29 @@ namespace JotaSystem.Sdk.Core.CrossCutting.Providers.Models
         PaymentCard? Card = null,
         PaymentRecurrence? Recurrence = null);
 
+    /// <summary>
+    /// Configuração da integração usada na chamada ao gateway.
+    /// </summary>
+    /// <param name="Secrets">
+    /// Credenciais já decifradas da integração do tenant, por nome (ex.: <c>merchantKey</c>,
+    /// <c>clientSecret</c>). Cada gateway documenta as chaves que consome e completa o que
+    /// faltar com a configuração padrão da aplicação.
+    /// </param>
     public sealed record PaymentProviderContext(
         string Environment,
         string? PublicConfigJson = null,
         string? SecretReference = null,
-        string? WebhookSecretReference = null);
+        string? WebhookSecretReference = null,
+        IReadOnlyDictionary<string, string>? Secrets = null);
+
+    /// <summary>
+    /// Meio de pagamento oferecido por um gateway, usado para configurar a forma de
+    /// pagamento sem que o operador precise decorar códigos.
+    /// </summary>
+    public sealed record PaymentMethodOption(
+        string Code,
+        string Name,
+        string? Description = null);
 
     public sealed record PaymentCustomer(
         string Name,

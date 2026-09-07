@@ -5,6 +5,12 @@ namespace JotaSystem.Sdk.Core.CrossCutting.Providers
     public interface IPaymentProvider
     {
         /// <summary>
+        /// Meios de pagamento oferecidos pelo gateway, para montar a configuração da forma
+        /// de pagamento. Devolve vazio quando o gateway não publica esse catálogo.
+        /// </summary>
+        IReadOnlyList<PaymentMethodOption> GetSupportedMethods(string providerKey) => [];
+
+        /// <summary>
         /// Abre uma sessao de checkout para que o navegador do comprador envie os dados do
         /// cartao direto ao gateway e devolva um token de uso unico. Gateways sem suporte a
         /// captura no navegador devolvem <c>IsSuccess</c> falso.
