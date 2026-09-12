@@ -39,10 +39,16 @@ namespace JotaSystem.Sdk.Core.CrossCutting.Providers.Models
     /// Meio de pagamento oferecido por um gateway, usado para configurar a forma de
     /// pagamento sem que o operador precise decorar códigos.
     /// </summary>
+    /// <param name="RequiresCard">
+    /// Indica que a cobrança só é aceita com os dados do cartão, capturados no navegador
+    /// pelo checkout do gateway. Quem opera a cobrança usa isso para pedir o cartão antes
+    /// de chamar o gateway.
+    /// </param>
     public sealed record PaymentMethodOption(
         string Code,
         string Name,
-        string? Description = null);
+        string? Description = null,
+        bool RequiresCard = false);
 
     public sealed record PaymentCustomer(
         string Name,
@@ -152,25 +158,39 @@ namespace JotaSystem.Sdk.Core.CrossCutting.Providers.Models
         string? Message = null,
         IReadOnlyDictionary<string, string>? Metadata = null);
 
+    /// <param name="MethodCode">
+    /// Meio de pagamento usado na criação da cobrança. Gateways que atendem mais de uma API
+    /// pelo mesmo <c>ProviderKey</c> dependem dele para consultar a transação na API certa.
+    /// </param>
     public sealed record PaymentProviderQuery(
         string ProviderKey,
         string TransactionId,
         string? Reference = null,
-        PaymentProviderContext? Context = null);
+        PaymentProviderContext? Context = null,
+        string? MethodCode = null);
 
+    /// <inheritdoc cref="PaymentProviderQuery" path="/param[@name='MethodCode']"/>
     public sealed record PaymentProviderOperation(
         string ProviderKey,
         string TransactionId,
         string? Reason = null,
-        PaymentProviderContext? Context = null);
+        PaymentProviderContext? Context = null,
+        string? MethodCode = null);
 
+    /// <inheritdoc cref="PaymentProviderQuery" path="/param[@name='MethodCode']"/>
     public sealed record PaymentProviderRefund(
         string ProviderKey,
         string TransactionId,
         decimal? Amount = null,
         string? Reason = null,
-        PaymentProviderContext? Context = null);
+        PaymentProviderContext? Context = null,
+        string? MethodCode = null);
 
+    /// <param name="QrCode">Código copia e cola do Pix, quando o meio de pagamento gera um.</param>
+    /// <param name="QrCodeImage">
+    /// Imagem do QR Code em base64, como o gateway devolveu e sem o prefixo <c>data:</c>.
+    /// Acompanha o <paramref name="QrCode"/> nos gateways que já renderizam o código.
+    /// </param>
     public sealed record PaymentProviderResult(
         bool IsSuccess,
         PaymentProviderStatusEnum Status,
@@ -184,7 +204,8 @@ namespace JotaSystem.Sdk.Core.CrossCutting.Providers.Models
         DateTimeOffset? ExpiresAt = null,
         string? Message = null,
         string? RawPayload = null,
-        IReadOnlyDictionary<string, string>? Metadata = null);
+        IReadOnlyDictionary<string, string>? Metadata = null,
+        string? QrCodeImage = null);
 
     public sealed record PaymentWebhookRequest(
         string ProviderKey,
