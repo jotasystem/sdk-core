@@ -20,6 +20,7 @@ namespace JotaSystem.Sdk.Core.CrossCutting.Settings
         public FacilitaMovelSetting? FacilitaMovel { get; set; }
         public NvoipSetting? Nvoip { get; set; }
         public MessageBirdSetting? MessageBird { get; set; }
+        public BrevoSetting? Brevo { get; set; }
 
         // 🔹 Subclasses para cada provider
 
@@ -92,6 +93,12 @@ namespace JotaSystem.Sdk.Core.CrossCutting.Settings
         {
             [Required] public string ApiKey { get; set; } = string.Empty;
             [Required] public string From { get; set; } = string.Empty;
+        }
+
+        public class BrevoSetting
+        {
+            [Required] public string ApiKey { get; set; } = string.Empty;
+            [Required] public string Sender { get; set; } = string.Empty;
         }
     }
 }

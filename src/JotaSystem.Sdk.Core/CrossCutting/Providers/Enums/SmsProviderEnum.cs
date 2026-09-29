@@ -49,5 +49,9 @@ namespace JotaSystem.Sdk.Core.CrossCutting.Providers.Enum
         [Display(Name = "MessageBird")]
         [EnumMember(Value = "messagebird")]
         MessageBird = 10,
+
+        [Display(Name = "Brevo")]
+        [EnumMember(Value = "brevo")]
+        Brevo = 11,
     }
 }
